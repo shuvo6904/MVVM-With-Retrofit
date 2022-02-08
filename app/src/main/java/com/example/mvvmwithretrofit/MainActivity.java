@@ -2,7 +2,7 @@ package com.example.mvvmwithretrofit;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 
 import android.os.Bundle;
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         postListAdapter = new PostListAdapter(this, postModelList);
         mainBinding.recyclerViewId.setAdapter(postListAdapter);
 
-        viewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
+        //viewModel = ViewModelProviders.of(this).get(PostListViewModel.class);
+        viewModel = new ViewModelProvider(this).get(PostListViewModel.class);
         viewModel.getPostsListObserver().observe(this, new Observer<List<PostModel>>() {
             @Override
             public void onChanged(List<PostModel> postModels) {
